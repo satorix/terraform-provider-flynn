@@ -1,0 +1,6 @@
+.idea
+*.tfstate
+*.tfstate.*
+vendor/
+.terraform
+test/.test-data
