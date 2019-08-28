@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/plugin"
-	"terraform-provider-flynn/flynn"
+	"gitlab.iexposure.com/satorix/terraform/terraform-provider-flynn/flynn"
 )
 
 func main() {
