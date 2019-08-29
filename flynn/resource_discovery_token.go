@@ -43,7 +43,7 @@ func getDiscoveryTokenFrom(uri string) (string, error) {
         return "", err
     }
     if res.StatusCode != http.StatusCreated {
-        return "", urlError("POST", uri, res.StatusCode)
+        return "", fmt.Errorf("HTTP request error. Response code: %d", res.StatusCode)
     }
 
     base, err := url.Parse(uri)
@@ -84,13 +84,4 @@ func resourceDiscoveryTokenUpdate(d *schema.ResourceData, meta interface{}) erro
 
 func resourceDiscoveryTokenDelete(d *schema.ResourceData, meta interface{}) error {
     return nil
-}
-
-func urlError(method, uri string, status int) error {
-    return &url.Error{
-        Op:  method,
-        URL: uri,
-        Err: fmt.Errorf("unexpected status %d", status),
-    }
-
 }
