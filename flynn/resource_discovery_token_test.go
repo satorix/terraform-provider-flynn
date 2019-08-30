@@ -1,14 +1,14 @@
 package flynn
 
 import (
-    "fmt"
-    "net/http"
-    "net/http/httptest"
-    "regexp"
-    "testing"
+	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"regexp"
+	"testing"
 
-    "github.com/hashicorp/terraform/helper/resource"
-    "github.com/hashicorp/terraform/terraform"
+	"github.com/hashicorp/terraform/helper/resource"
+	"github.com/hashicorp/terraform/terraform"
 )
 
 type TestHTTPMock struct {
@@ -65,7 +65,7 @@ func TestDiscoveryToken_http404(t *testing.T) {
 		Providers: testAccProviders,
 		Steps: []resource.TestStep{
 			resource.TestStep{
-				Config: fmt.Sprintf(testFlynnDiscoveryTokenConfigBasic, fmt.Sprintf("%s/404", TestHTTPMock.server.URL)),
+				Config:      fmt.Sprintf(testFlynnDiscoveryTokenConfigBasic, fmt.Sprintf("%s/404", TestHTTPMock.server.URL)),
 				ExpectError: regexp.MustCompile("HTTP request error. Response code: 404"),
 			},
 		},
@@ -88,6 +88,6 @@ func setUpMockHTTPServer() *TestHTTPMock {
 	)
 
 	return &TestHTTPMock{
-        server: Server,
+		server: Server,
 	}
 }
